@@ -1,0 +1,109 @@
+:root {
+  --kachel: #2f5e42;
+  --tief: #1e4130;
+  --mint: #e3eee6;
+  --weiss: #f7faf7;
+  --tinte: #16211a;
+  --grau: #56635b;
+  --bier: #f0b92b;
+  --head: "Caveat Brush", "Segoe Print", cursive;
+  --body: "PT Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { font: 18px/1.65 var(--body); color: var(--tinte); background: var(--weiss); }
+h1, h2, h3 { font-family: var(--head); font-weight: 400; line-height: 1.05; color: var(--tief); }
+h2 { font-size: clamp(2.3rem, 6vw, 3.5rem); margin-bottom: 10px; }
+h3 { font-size: 1.7rem; margin-bottom: 6px; }
+a { color: var(--kachel); }
+:focus-visible { outline: 3px solid var(--tief); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+section { padding: clamp(56px, 9vw, 104px) 20px; }
+section.hero { padding-top: clamp(32px, 6vw, 72px); }
+section.strip { padding-block: 36px; }
+.alt-bg { background: var(--mint); }
+.lead { max-width: 56ch; color: var(--grau); margin-bottom: 26px; }
+.note { font-size: 15px; color: var(--grau); margin-top: 14px; }
+
+/* Kopf */
+.top-bar { background: var(--tief); color: #fff; font-size: 15px; padding: 7px 20px; display: flex; flex-wrap: wrap; gap: 2px 22px; justify-content: center; }
+.top-bar a { color: #fff; }
+.site-header { position: sticky; top: 0; z-index: 10; background: rgba(247, 250, 247, .96); border-bottom: 1px solid rgba(22, 33, 26, .12); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 8px 20px; }
+.logo { font: 2.2rem/1 var(--head); color: var(--tief); text-decoration: none; }
+.nav { display: none; width: 100%; flex-direction: column; padding: 10px 0 14px; }
+.nav.open { display: flex; }
+.nav a { color: var(--tinte); text-decoration: none; font-weight: 700; padding: 9px 0; }
+.nav a:not(.btn):hover { text-decoration: underline; text-decoration-color: var(--bier); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+.burger { background: none; border: 2px solid var(--tief); border-radius: 10px; padding: 6px 14px; font: 700 16px var(--body); color: var(--tief); cursor: pointer; }
+@media (min-width: 840px) {
+  .burger { display: none; }
+  .nav { display: flex; flex-direction: row; align-items: center; width: auto; gap: 26px; padding: 0; }
+}
+
+/* Buttons */
+.btn { display: inline-block; background: var(--kachel); color: #fff; font: 700 18px var(--body); padding: 13px 26px; border-radius: 12px; text-decoration: none; border: 0; cursor: pointer; }
+.btn:hover { background: var(--tief); }
+.btn.ghost { background: transparent; color: var(--tief); box-shadow: inset 0 0 0 2px var(--tief); }
+.btn.ghost:hover { background: var(--tief); color: #fff; }
+.nav a.btn { color: #fff; padding: 9px 20px; }
+
+/* Hero */
+.hero-grid { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
+.hero h1 { font-size: clamp(3.6rem, 12vw, 7.4rem); color: var(--tinte); margin-bottom: 18px; }
+.hero p { max-width: 44ch; font-size: 1.2rem; margin-bottom: 26px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.status { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 8px 18px; border-radius: 99px; background: var(--mint); font-weight: 700; font-size: 16px; }
+.status::before { content: ""; width: 11px; height: 11px; border-radius: 50%; background: #8a948d; }
+.status.open::before { background: #2e9b4f; }
+.status.closed::before { background: #c0392b; }
+
+/* Kachelwand (Bildersatz) und Fotos */
+.pic, .tilewall { display: block; width: 100%; aspect-ratio: 5 / 4; border-radius: 28px; object-fit: cover; }
+.tilewall { position: relative; background-color: var(--kachel); background-image: linear-gradient(rgba(0,0,0,.22) 2px, transparent 2px), linear-gradient(90deg, rgba(0,0,0,.22) 2px, transparent 2px), linear-gradient(140deg, rgba(255,255,255,.14), transparent 50%); background-size: 76px 76px, 76px 76px, auto; display: grid; place-items: center; }
+.plate { background: var(--weiss); border-radius: 16px; padding: 18px 30px; text-align: center; box-shadow: 0 0 0 5px var(--weiss), 0 0 0 8px var(--tief), 0 14px 0 8px rgba(0,0,0,.18); transform: rotate(-3deg); }
+.plate b { display: block; font: 2.6rem/1 var(--head); color: var(--kachel); font-weight: 400; }
+.plate span { font-weight: 700; font-size: 15px; color: var(--grau); }
+
+/* Karten und Listen */
+.tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+.tab { font: 700 17px var(--body); padding: 10px 22px; border-radius: 99px; border: 2px solid var(--tief); background: transparent; color: var(--tief); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--tief); color: #fff; }
+.list { max-width: 720px; }
+.dish { display: flex; justify-content: space-between; gap: 18px; padding: 14px 0; border-bottom: 1px solid rgba(22, 33, 26, .16); }
+.dish small { display: block; color: var(--grau); font-size: 15px; line-height: 1.4; }
+.dish b { white-space: nowrap; }
+.veg { display: inline-block; background: var(--kachel); color: #fff; font-size: 13px; padding: 0 9px; border-radius: 99px; margin-left: 8px; vertical-align: middle; }
+.menu { display: grid; gap: 36px; }
+@media (min-width: 800px) { .menu { grid-template-columns: repeat(3, 1fr); gap: 48px; } }
+
+/* Bewertung */
+.rate { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; justify-content: center; text-align: center; }
+.stars { font-size: 2rem; letter-spacing: 3px; background: linear-gradient(90deg, var(--bier) 90%, #ccd3cd 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Zweispaltig */
+.two { display: grid; gap: 36px; }
+@media (min-width: 860px) { .two { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; } }
+.facts { list-style: none; padding: 0; margin-top: 18px; }
+.facts li { padding: 10px 0 10px 18px; border-left: 4px solid var(--bier); margin-bottom: 8px; font-weight: 700; }
+
+/* Formular, Zeiten */
+form { display: grid; gap: 14px; max-width: 640px; }
+.row { display: grid; gap: 14px; }
+@media (min-width: 600px) { .row { grid-template-columns: 1fr 1fr 1fr; } }
+label { font-weight: 700; display: grid; gap: 4px; font-size: 16px; }
+input, textarea { font: 18px var(--body); padding: 11px 13px; border: 2px solid #b7c4bb; border-radius: 12px; background: #fff; width: 100%; }
+input:focus, textarea:focus { border-color: var(--kachel); }
+#form-msg { font-weight: 700; min-height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 440px; }
+td { padding: 10px 4px; border-bottom: 1px solid rgba(22, 33, 26, .16); }
+td:last-child { text-align: right; }
+tr.today { font-weight: 700; }
+tr.today td:first-child { box-shadow: inset 4px 0 0 var(--bier); padding-left: 12px; }
+address { font-style: normal; margin-bottom: 16px; }
+
+/* Fuß */
+.site-footer { background: var(--tief); color: #fff; padding: 36px 20px; font-size: 16px; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.site-footer a { color: #fff; margin: 0 10px; }
+.site-footer p { opacity: .8; }
